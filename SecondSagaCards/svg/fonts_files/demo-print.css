@@ -1,0 +1,21 @@
+body {
+    background: #fff;
+    color: #000;
+    font: 87% "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+#holder {
+    width: 7in;
+    left: 0%;
+    margin: 0 0 0 0;
+    position: absolute;
+    top: 0;
+    height: 9.5in;
+}
+#printable {
+    width: 7in;
+    left: 0%;
+    margin: 0 0 0 0;
+    position: absolute;
+    top: 0;
+    height: 9.5in;
+}

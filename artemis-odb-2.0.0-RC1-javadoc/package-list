@@ -1,0 +1,10 @@
+com.artemis
+com.artemis.annotations
+com.artemis.components
+com.artemis.injection
+com.artemis.io
+com.artemis.link
+com.artemis.managers
+com.artemis.systems
+com.artemis.utils
+com.artemis.utils.reflect

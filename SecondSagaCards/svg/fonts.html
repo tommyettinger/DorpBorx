@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Raphael Fonts</title>
+        <link rel="stylesheet" href="fonts_files/demo.css" media="screen">
+        <link rel="stylesheet" href="fonts_files/demo-print.css" media="print">
+        <script src="fonts_files/raphael.js"></script>
+        <script src="fonts_files/font.js"></script>
+        <script>
+        var cards = [
+	"╬════════════════════════════════════╬════════════════════════════════════╬════════════════════════════════════╬", 
+	"║    Desperado      ■■            12 ║      Jendai       ■■            16 ║      Jendai       ■■            16 ║", 
+	"║  Reckless Shot                     ║  Kinetic Riposte                   ║  Kinetic Riposte                   ║", 
+	"║ ┌┤Weapon├───────┐Far Attack vs. R  ║ ┌┤Weapon├───────┐Pre-Defense       ║ ┌┤Weapon├───────┐Pre-Defense       ║", 
+	"║ │Needs Ranged   │┌─┬─┬─┬─┬─┬─┬─┬─┐ ║ │Needs Parrying │┌─┬─┬─┬─┬─┬─┬─┬─┐ ║ │Needs Parrying │┌─┬─┬─┬─┬─┬─┬─┬─┐ ║", 
+	"║ │Same Type      ││K│A│R│D│I│M│E│S│ ║ │Motion Type    ││K│A│R│D│I│M│E│S│ ║ │Motion Type    ││K│A│R│D│I│M│E│S│ ║", 
+	"║ │Extra 3        ││ │1│2│ │ │ │ │ │ ║ │Extra 0        ││ │ │ │ │1│ │ │2│ ║ │Extra 0        ││ │ │ │ │1│ │ │2│ ║", 
+	"║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║", 
+	"║ To play this card, you must ↷↷     ║ Trigger: You are Near Attacked.    ║ Trigger: You are Near Attacked.    ║", 
+	"║ your active Defense.               ║ To use this card, you must ↷↷ your ║ To use this card, you must ↷↷ your ║", 
+	"║ [1A]: You deal {Wpn} + 5 damage to ║ inactive Mystic Exhaustion.        ║ inactive Mystic Exhaustion.        ║", 
+	"║  the target.                       ║ [1I]: Roll 2d6 vs. the attack's    ║ [1I]: Roll 2d6 vs. the attack's    ║", 
+	"║ [2R]: ↷ your inactive Defense and  ║  Worth. If you win, the attack     ║  Worth. If you win, the attack     ║", 
+	"║  perform a Stunt on the target     ║  misses.                           ║  misses.                           ║", 
+	"║  (Push/Trip/Suppress level 3).     ║ [2S]: Break the attacker's weapon  ║ [2S]: Break the attacker's weapon  ║", 
+	"║                                    ║  if its Worth is less than {Wpn}   ║  if its Worth is less than {Wpn}   ║", 
+	"║                                    ║  - 5 and make at most 1 simple     ║  - 5 and make at most 1 simple     ║", 
+	"║ \"You'll never take me alive!\"      ║  attack on the target at the start ║  attack on the target at the start ║", 
+	"║  - The legendary rosho Breakneck   ║   of your next turn.               ║   of your next turn.               ║", 
+	"║    Bandit, shortly before he was   ║                                    ║                                    ║", 
+	"║    taken in alive by the zolt      ║ \"You think that axe will work      ║ \"You think that axe will work      ║", 
+	"║    bounty hunter Verisk Serkot.    ║ against a Jendai? Think again.\"    ║ against a Jendai? Think again.\"    ║", 
+	"╬════════════════════════════════════╬════════════════════════════════════╬════════════════════════════════════╬", 
+	"║  Martial Artist   ■■            10 ║  Bounty Hunter    ■■            17 ║      Palk         ■■            15 ║", 
+	"║   Joint Strike                     ║    Takedown                        ║  Body and Mind                     ║", 
+	"║ ┌┤Unarmed├──────┐Near Attack vs. E ║ ┌┤Unarmed├──────┐Near Attack vs. S ║ ┌┤Power├────────┐Post-Defense      ║", 
+	"║ │No Hands Needed│┌─┬─┬─┬─┬─┬─┬─┬─┐ ║ │Needs 2 Hands  │┌─┬─┬─┬─┬─┬─┬─┬─┐ ║ │No Hands Needed│┌─┬─┬─┬─┬─┬─┬─┬─┐ ║", 
+	"║ │Anti-Vital Type││K│A│R│D│I│M│E│S│ ║ │Blunt Type     ││K│A│R│D│I│M│E│S│ ║ │Fold Type      ││K│A│R│D│I│M│E│S│ ║", 
+	"║ │Extra 0        ││ │ │ │1│ │ │ │2│ ║ │Extra 0        ││ │ │ │1│ │ │ │1│ ║ │Extra 0        ││ │ │ │ │ │ │ │ │ ║", 
+	"║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║", 
+	"║ [1D]: ↷↷ two of the target's       ║ To play this card, you must have a ║ Trigger: You take damage.          ║", 
+	"║  active Attack or Skill cards.     ║ ready Binding item.                ║ To play this card, you must have   ║", 
+	"║ [2S]: You deal {Una} damage to the ║ [1D]: You perform a Stunt on the   ║ at least one card in your deck.    ║", 
+	"║  target and perform a Stunt on the ║  target (Disarm level 4) and use   ║ Discard a card from your deck; do  ║", 
+	"║  target (Push/Pull/Trip/Pin/Disarm ║  your Binding item on the target.  ║ not look at it. Recover 7 health.  ║", 
+	"║  level 5).                         ║ [1S]: You deal {Una} damage to the ║ Your I rolls fail for 1 round.     ║", 
+	"║                                    ║  target and perform a Stunt on the ║                                    ║", 
+	"║                                    ║  target (Pin level 4).             ║ Refugees from a ruined universe,   ║", 
+	"║                                    ║                                    ║ the palk can pull replacement body ║", 
+	"║                                    ║ \"Stop struggling, it won't do you  ║ parts from foldspace when hurt at  ║", 
+	"║                                    ║ any good! If you try to get out of ║ the expense of \"brain\" damage.     ║", 
+	"║ \"You would be surprised at how     ║ these cuffs I'm going to have to   ║ Their strange anatomy makes their  ║", 
+	"║ little it takes to break a knee,   ║ bring out the shock-dropper, and   ║ visible form a shell, controlled   ║", 
+	"║ even with just a well-timed kick!\" ║ you don't want that on your face.\" ║ like a puppet by a foldspace mind. ║", 
+	"╬════════════════════════════════════╬════════════════════════════════════╬════════════════════════════════════╬", 
+	"║      Palk         ■■            15 ║                                                                          ", 
+	"║  Body and Mind                     ║                                                                          ", 
+	"║ ┌┤Power├────────┐Post-Defense      ║                                                                          ", 
+	"║ │No Hands Needed│┌─┬─┬─┬─┬─┬─┬─┬─┐ ║                                                                          ", 
+	"║ │Fold Type      ││K│A│R│D│I│M│E│S│ ║                                                                          ", 
+	"║ │Extra 0        ││ │ │ │ │ │ │ │ │ ║                                                                          ", 
+	"║ └───────────────┘└─┴─┴─┴─┴─┴─┴─┴─┘ ║                                                                          ", 
+	"║ Trigger: You take damage.          ║                                                                          ", 
+	"║ To play this card, you must have   ║                                                                          ", 
+	"║ at least one card in your deck.    ║                                                                          ", 
+	"║ Discard a card from your deck; do  ║                                                                          ", 
+	"║ not look at it. Recover 7 health.  ║                                                                          ", 
+	"║ Your I rolls fail for 1 round.     ║                                                                          ", 
+	"║                                    ║                                                                          ", 
+	"║ Refugees from a ruined universe,   ║                                                                          ", 
+	"║ the palk can pull replacement body ║                                                                          ", 
+	"║ parts from foldspace when hurt at  ║                                                                          ", 
+	"║ the expense of \"brain\" damage.     ║                                                                          ", 
+	"║ Their strange anatomy makes their  ║                                                                          ", 
+	"║ visible form a shell, controlled   ║                                                                          ", 
+	"║ like a puppet by a foldspace mind. ║                                                                          ", 
+	"╬════════════════════════════════════╬                                                                          "];
+            
+            var rend = function (targetDiv, isPrint) {
+            	    var lineheight = 14, totalHeight = 943;
+            	    if(isPrint) {
+            	    	    lineheight = 13.5;
+            	    	    totalHeight = 900;
+            	    }
+            	    var r = Raphael(targetDiv, 672, totalHeight);
+                    var fonts = [0, r.getFont("1"), r.getFont("2"), r.getFont("3"), r.getFont("monkey")];
+                    var printedCards = [];
+                    /*
+                    custom = r.print(70, 150, "Custom fonts", fonts[4], 60).attr({fill: "#fff"});
+                    */
+                    /*
+                    aseasyas = r.print(50, 240, "As easy as", fonts[4], 60).attr({fill: "#fff"}),
+                    nums = [
+                        r.print(450, 240, "1", fonts[4], 12).attr({fill: "#fff"}),
+                        r.print(500, 240, "2", fonts[4], 16).attr({fill: "#fff"}),
+                        r.print(550, 240, "3", fonts[4], 24).attr({fill: "#fff"})
+                    ],
+                    times = 3;*/
+                    for(i in cards)
+                    {
+                    	    printedCards[i] = r.print(0, 4 + (i * lineheight), cards[i], fonts[4], 16).attr({fill: "#000"});
+                    }
+                    
+/*
+                for (var i = 0, ii = aseasyas.length; i < ii; i++) {
+                    aseasyas[i].animate({fill: Raphael.getColor()}, 2000);
+                }
+                nums[0].animate({fill: Raphael.getColor()}, 2000);
+                nums[1].animate({fill: Raphael.getColor()}, 2000);
+                nums[2].animate({fill: Raphael.getColor()}, 2000, function () {
+                    aseasyas.animate({transform: "...r360"}, 1000);
+                    var scale = [nums[0][0].transform(), nums[1][0].transform(), nums[2][0].transform()];
+                    nums[0].animate({transform: "...s3,3"}, 500, function () {
+                        nums[0].animate({transform: scale[0]}, 1000);
+                        nums[1].animate({transform: "...s3,3"}, 500, function () {
+                            nums[1].animate({transform: scale[1]}, 1000);
+                            nums[2].animate({transform: "...s3,3"}, 500, function () {
+                                nums[2].animate({transform: scale[2]}, 1000);
+                                custom.animate({opacity: .4}, 500);
+                            });
+                        });
+                    });
+                });
+                */
+            };
+            window.onload = function ()
+            {
+            	    rend("holder", false);
+            };
+            
+            function printPage(id)
+            {
+               document.getElementById(id).innerHTML = "";
+               rend(id, true);
+               var html="<html>";
+               html += "<head><link rel='stylesheet' href='fonts_files/demo-print2.css'></head>"
+               html += document.getElementById(id).innerHTML;
+               html += "</html>";
+            
+               var printWin = window.open('','','left=0,top=0,width=700,height=500,toolbar=1,scrollbars=1,status  =0');
+               printWin.document.write(html);
+               printWin.document.close();
+               printWin.focus();
+               printWin.print();
+               printWin = null;
+            };
+        </script>
+    </head>
+    <body>
+        <div id="holder"></div>
+        <div id="printable"></div>
+        <div style="float:right;"><input type="button" value="Print" onclick="printPage('printable');"></input></div>
+        <!-- <p id="copy">Demo of <a href="http://raphaeljs.com/">Raphaël</a>—JavaScript Vector Library</p> -->
+    </body>
+
+<!--
+<svg style="overflow: hidden; position: relative;" xmlns="http://www.w3.org/2000/svg" width="640" version="1.1" height="480"><desc>Created with Raphaël 2.0.0</desc><defs></defs><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 70.123, 175.5)" d="M0,-195C28,-214,63,-242,111,-227C130,-232,187,-213,234,-220L234,-218C237,-222,249,-220,251,-216C251,-207,234,-187,202,-155L108,-155L126,-82C200,-97,226,-119,244,-101C208,-77,151,-41,83,-23C47,-96,53,-103,0,-189L0,-195Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 111.79, 175.5)" d="M9,-203C37,-216,57,-230,86,-234C104,-210,98,-131,83,-78C112,-74,152,-89,147,-93L118,-177C162,-196,188,-205,195,-205C199,-183,209,-129,220,-126C230,-128,236,-97,242,-78C230,-66,204,-51,165,-34C158,-41,155,-51,154,-65C90,-33,57,-33,7,-25L0,-49C12,-103,23,-133,15,-163L18,-163Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 151.956, 175.5)" d="M230,-109C196,-60,106,-13,25,-14C10,-42,43,-88,58,-82C81,-90,96,-99,102,-93C99,-75,90,-59,92,-51C123,-51,146,-61,163,-81C85,-100,36,-118,18,-137C-16,-172,-2,-194,46,-222C69,-227,107,-251,145,-250C144,-246,172,-225,180,-213C180,-210,162,-196,126,-171L120,-171C100,-192,85,-201,69,-201C66,-160,101,-151,180,-130C212,-122,230,-117,230,-109Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 190.123, 175.5)" d="M150,-265C182,-275,171,-220,180,-194L178,-194C181,-192,180,-185,181,-180C211,-169,282,-173,306,-166C308,-169,316,-171,315,-165C268,-157,225,-148,184,-137C188,-118,186,-96,190,-79L282,-131C289,-131,296,-135,297,-126C293,-118,271,-105,236,-80C190,-48,155,-20,125,-6C112,-15,115,-34,111,-51C121,-70,108,-107,107,-133C70,-132,-5,-126,0,-157C18,-170,39,-181,64,-191C75,-190,92,-181,100,-185C99,-198,95,-211,89,-225Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 242.456, 175.5)" d="M214,-139C219,-117,149,-33,88,-33C58,-33,30,-53,5,-91C-5,-129,2,-150,29,-180C32,-180,39,-187,49,-202C70,-207,86,-221,126,-227C129,-227,131,-223,134,-214C154,-214,176,-202,202,-180C213,-161,215,-158,214,-139ZM82,-168C55,-140,87,-97,128,-88C134,-88,139,-98,144,-118C144,-136,124,-153,82,-168Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 278.123, 175.5)" d="M141,-202C131,-215,176,-243,205,-252C207,-252,210,-240,213,-215L239,-141C284,-67,261,-58,190,2C174,10,161,15,149,15C136,5,192,-20,193,-51C189,-70,185,-79,181,-79C138,-49,130,-28,107,-46C98,-61,91,-78,81,-92C73,-84,48,-65,10,-54C5,-55,-1,-54,0,-67C30,-109,43,-135,34,-182C34,-190,79,-217,101,-220C106,-222,115,-191,136,-156Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 339.123, 175.5)" d="M90,-241C102,-251,108,-254,117,-253C181,-209,198,-204,275,-205C280,-205,285,-200,289,-192C292,-179,241,-177,173,-166C181,-159,184,-132,196,-108L284,-136C285,-135,286,-134,288,-134C287,-119,256,-100,196,-76C194,-60,189,-52,181,-53C147,-33,124,-24,111,-24L111,-28C108,-24,103,-29,101,-31L102,-57C72,-56,-2,-54,1,-72C-2,-80,22,-102,40,-96C52,-107,80,-100,97,-97C89,-123,70,-157,39,-199C37,-232,53,-224,90,-241Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 387.123, 175.5)" d="M214,-139C219,-117,149,-33,88,-33C58,-33,30,-53,5,-91C-5,-129,2,-150,29,-180C32,-180,39,-187,49,-202C70,-207,86,-221,126,-227C129,-227,131,-223,134,-214C154,-214,176,-202,202,-180C213,-161,215,-158,214,-139ZM82,-168C55,-140,87,-97,128,-88C134,-88,139,-98,144,-118C144,-136,124,-153,82,-168Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 422.79, 175.5)" d="M8,-172C24,-180,27,-191,52,-189C52,-192,61,-195,80,-199L137,-139L134,-231C126,-232,109,-232,107,-244C119,-266,156,-273,189,-278C202,-275,209,-265,209,-248C209,-190,214,-121,225,-42C214,-35,194,-8,160,-4C147,-23,122,-50,85,-84C82,-65,75,-56,65,-56C60,-51,51,-46,37,-41C35,-35,26,-32,13,-32C6,-39,-1,-46,0,-57C17,-89,20,-129,8,-172Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 460.29, 175.5)" d="M150,-265C182,-275,171,-220,180,-194L178,-194C181,-192,180,-185,181,-180C211,-169,282,-173,306,-166C308,-169,316,-171,315,-165C268,-157,225,-148,184,-137C188,-118,186,-96,190,-79L282,-131C289,-131,296,-135,297,-126C293,-118,271,-105,236,-80C190,-48,155,-20,125,-6C112,-15,115,-34,111,-51C121,-70,108,-107,107,-133C70,-132,-5,-126,0,-157C18,-170,39,-181,64,-191C75,-190,92,-181,100,-185C99,-198,95,-211,89,-225Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path opacity="0.4" stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 512.623, 175.5)" d="M230,-109C196,-60,106,-13,25,-14C10,-42,43,-88,58,-82C81,-90,96,-99,102,-93C99,-75,90,-59,92,-51C123,-51,146,-61,163,-81C85,-100,36,-118,18,-137C-16,-172,-2,-194,46,-222C69,-227,107,-251,145,-250C144,-246,172,-225,180,-213C180,-210,162,-196,126,-171L120,-171C100,-192,85,-201,69,-201C66,-160,101,-151,180,-130C212,-122,230,-117,230,-109Z" stroke="none" fill="#ffffff" style="opacity: 0.4;"></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 50.123, 265.5)" d="M132,-261C149,-213,157,-216,190,-132L225,-43C214,-32,199,-21,179,-9C141,-12,117,-23,158,-34C148,-54,139,-68,132,-78C117,-69,90,-63,51,-60L13,-38C4,-38,0,-42,0,-50C0,-68,7,-69,11,-74C5,-75,2,-80,2,-88C2,-91,13,-96,34,-103C59,-157,74,-184,67,-224ZM105,-127C101,-115,91,-108,91,-92C102,-88,112,-94,123,-96Z" stroke="none" fill="#bf0000" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 87.4564, 265.5)" d="M230,-109C196,-60,106,-13,25,-14C10,-42,43,-88,58,-82C81,-90,96,-99,102,-93C99,-75,90,-59,92,-51C123,-51,146,-61,163,-81C85,-100,36,-118,18,-137C-16,-172,-2,-194,46,-222C69,-227,107,-251,145,-250C144,-246,172,-225,180,-213C180,-210,162,-196,126,-171L120,-171C100,-192,85,-201,69,-201C66,-160,101,-151,180,-130C212,-122,230,-117,230,-109Z" stroke="none" fill="#bf5600" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 143.123, 265.5)" d="M52,-238C66,-236,81,-226,93,-234C108,-211,144,-203,178,-212L178,-210C183,-211,189,-216,192,-212C192,-217,201,-219,218,-220L222,-216C219,-209,196,-196,152,-185C126,-179,113,-177,113,-173C110,-148,161,-156,178,-153C205,-156,235,-168,261,-165L261,-159C236,-146,203,-130,156,-121C113,-113,124,-100,127,-68C157,-79,195,-105,236,-119C241,-97,215,-87,164,-50C140,-33,112,-22,85,-11C82,-16,79,-14,75,-11C67,-38,62,-82,52,-104C33,-107,1,-93,6,-123C19,-137,29,-143,36,-143C31,-167,23,-179,14,-179C2,-179,0,-181,0,-191C0,-201,13,-213,40,-226C40,-229,44,-233,52,-238Z" stroke="none" fill="#bfac00" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 186.623, 265.5)" d="M132,-261C149,-213,157,-216,190,-132L225,-43C214,-32,199,-21,179,-9C141,-12,117,-23,158,-34C148,-54,139,-68,132,-78C117,-69,90,-63,51,-60L13,-38C4,-38,0,-42,0,-50C0,-68,7,-69,11,-74C5,-75,2,-80,2,-88C2,-91,13,-96,34,-103C59,-157,74,-184,67,-224ZM105,-127C101,-115,91,-108,91,-92C102,-88,112,-94,123,-96Z" stroke="none" fill="#7cbf00" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 223.956, 265.5)" d="M230,-109C196,-60,106,-13,25,-14C10,-42,43,-88,58,-82C81,-90,96,-99,102,-93C99,-75,90,-59,92,-51C123,-51,146,-61,163,-81C85,-100,36,-118,18,-137C-16,-172,-2,-194,46,-222C69,-227,107,-251,145,-250C144,-246,172,-225,180,-213C180,-210,162,-196,126,-171L120,-171C100,-192,85,-201,69,-201C66,-160,101,-151,180,-130C212,-122,230,-117,230,-109Z" stroke="none" fill="#26bf00" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 262.123, 265.5)" d="M66,-51C56,-66,14,-177,0,-185L0,-192L77,-233C99,-211,116,-170,127,-110C143,-119,145,-115,145,-130C145,-149,146,-162,149,-170C143,-173,140,-177,140,-183C147,-189,182,-221,228,-242L237,-227C227,-173,223,-110,217,-58C229,-22,215,-26,158,13L77,-5C79,-21,95,-23,103,-33C114,-31,120,-44,140,-51C138,-61,143,-78,138,-84C96,-62,72,-51,66,-51Z" stroke="none" fill="#00bf2f" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 319.123, 265.5)" d="M132,-261C149,-213,157,-216,190,-132L225,-43C214,-32,199,-21,179,-9C141,-12,117,-23,158,-34C148,-54,139,-68,132,-78C117,-69,90,-63,51,-60L13,-38C4,-38,0,-42,0,-50C0,-68,7,-69,11,-74C5,-75,2,-80,2,-88C2,-91,13,-96,34,-103C59,-157,74,-184,67,-224ZM105,-127C101,-115,91,-108,91,-92C102,-88,112,-94,123,-96Z" stroke="none" fill="#00bf85" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 356.456, 265.5)" d="M230,-109C196,-60,106,-13,25,-14C10,-42,43,-88,58,-82C81,-90,96,-99,102,-93C99,-75,90,-59,92,-51C123,-51,146,-61,163,-81C85,-100,36,-118,18,-137C-16,-172,-2,-194,46,-222C69,-227,107,-251,145,-250C144,-246,172,-225,180,-213C180,-210,162,-196,126,-171L120,-171C100,-192,85,-201,69,-201C66,-160,101,-151,180,-130C212,-122,230,-117,230,-109Z" stroke="none" fill="#00a2bf" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 448, 263.177)" d="M114,-141C82,-134,97,-66,97,-29C97,-13,135,-27,118,0L24,0C18,-1,21,-4,20,-15C25,-26,50,-13,45,-37L46,-123C43,-133,39,-140,28,-141C29,-150,39,-150,46,-150C41,-179,60,-234,28,-235C21,-235,20,-238,20,-245C20,-258,23,-256,34,-257C64,-262,71,-276,94,-283C96,-283,97,-282,97,-280C99,-238,93,-188,99,-150C104,-150,112,-147,114,-141Z" stroke="none" fill="#004cbf" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 499.209, 265.088)" d="M49,-244C27,-245,23,-227,19,-211C12,-215,10,-221,10,-230C12,-268,39,-283,79,-283C118,-266,115,-192,91,-161C58,-117,10,-79,9,-6C18,-16,17,-44,39,-42C71,-39,70,1,108,0C154,-2,168,-38,168,-85C158,-80,168,-49,145,-49C115,-49,107,-77,72,-77C51,-77,42,-60,28,-54C41,-128,170,-117,166,-214C163,-273,119,-299,57,-292C30,-280,9,-266,5,-230C0,-185,71,-172,73,-217C73,-230,63,-244,49,-244Z" stroke="none" fill="#0900bf" style=""></path><path stroke-width="6" transform="matrix(0.1667, 0, 0, 0.1667, 549.466, 262.248)" d="M26,-260C73,-268,115,-258,160,-264C184,-251,176,-233,166,-217C152,-192,135,-172,114,-156C151,-146,175,-122,175,-81C176,-35,144,0,91,0C43,0,13,-22,10,-68C17,-95,65,-87,54,-59C68,-18,143,-28,134,-81C141,-109,109,-132,70,-132C60,-137,60,-174,76,-167L89,-178C144,-227,143,-245,87,-230C58,-222,31,-209,22,-251Z" stroke="none" fill="#5f00bf" style=""></path></svg>
+-->
+</html>
